@@ -4,3 +4,7 @@ I've always wanted to make games (other than in roblox) and decided now is the t
 
 Install / Demo : 
 https://olorin-fox.itch.io/fox-survivors
+
+Controls :  
+Movement : Arrow Keys
+Menu : Esc
