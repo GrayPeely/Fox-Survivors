@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://chq660evlbs8h"]
+
+[ext_resource type="Script" uid="uid://btxmbp3586tf1" path="res://scripts/objects.gd" id="1_uq4jh"]
+[ext_resource type="Texture2D" uid="uid://b2vinonub3gac" path="res://Art/chest-1.png.png" id="2_f17pa"]
+[ext_resource type="Texture2D" uid="uid://dyx7tpegndmyw" path="res://Art/chest-2.png.png" id="3_g7bp4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qop6a"]
+size = Vector2(88, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ajhqo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_f17pa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_g7bp4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.0
+}]
+
+[node name="Objects" type="Area2D" unique_id=351035502 groups=["objects"]]
+z_index = 2
+script = ExtResource("1_uq4jh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1928250912]
+z_index = -1
+position = Vector2(-4, 0)
+shape = SubResource("RectangleShape2D_qop6a")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=118455231]
+sprite_frames = SubResource("SpriteFrames_ajhqo")

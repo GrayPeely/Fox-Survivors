@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://87usvsthgw6s"]
+
+[ext_resource type="Script" uid="uid://dqqq6b5k21i2p" path="res://scripts/enemy.gd" id="1_epg4t"]
+[ext_resource type="Texture2D" uid="uid://cwiw4jrr5cr5v" path="res://Art/Enemy/evil_fox_idle1.png" id="2_3yqyl"]
+[ext_resource type="PackedScene" uid="uid://bymnv2d1mh5yr" path="res://scenes/money!!!!!!!!!!!!!!.tscn" id="2_wujgv"]
+[ext_resource type="Texture2D" uid="uid://dsfkss4cfvju8" path="res://Art/Enemy/evil_fox_idle2.png" id="3_wujgv"]
+[ext_resource type="Texture2D" uid="uid://cnptn0v4rplo0" path="res://Art/Enemy/evil_fox_walk1.png" id="4_hb8ge"]
+[ext_resource type="Texture2D" uid="uid://drpi414b1f67u" path="res://Art/Enemy/evil_fox_walk2.png" id="5_e1ltt"]
+[ext_resource type="Texture2D" uid="uid://bx1o6lavin0fs" path="res://Art/Enemy/el turto-2.png.png" id="5_hb8ge"]
+[ext_resource type="Texture2D" uid="uid://brl7ybgkfe8na" path="res://Art/Enemy/el turto-1.png.png" id="6_e1ltt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dxifv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3yqyl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wujgv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_hb8ge")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_e1ltt")
+}],
+"loop": true,
+"name": &"tankWalk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_hb8ge")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_e1ltt")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pwjut"]
+size = Vector2(47, 23)
+
+[node name="Enemy" type="RigidBody2D" unique_id=1468908061 groups=["mobs"]]
+collision_layer = 2
+collision_mask = 5
+gravity_scale = 0.0
+script = ExtResource("1_epg4t")
+coin = ExtResource("2_wujgv")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=765948776]
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_dxifv")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1579249596]
+position = Vector2(4.5, 12.5)
+shape = SubResource("RectangleShape2D_pwjut")
+debug_color = Color(0.91764706, 0.18431373, 0.5411765, 0.75686276)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1557284080]
+
+[node name="EnemyHealth" type="Label" parent="." unique_id=987882309]
+offset_top = -50.0
+offset_right = 40.0
+offset_bottom = -27.0
+text = "0"
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

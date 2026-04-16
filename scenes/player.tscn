@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://ceuo03vxh4fff"]
+
+[ext_resource type="Script" uid="uid://ctb1chtu1k3dv" path="res://scripts/player.gd" id="1_sweqy"]
+[ext_resource type="PackedScene" uid="uid://b2uga7k78gkfp" path="res://scenes/sword.tscn" id="2_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://ct8xyt0ba2iip" path="res://Art/Player/fox sit-1.png.png" id="3_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://gqiih1qabi4q" path="res://Art/Player/fox sit-2.png.png" id="4_1jxqw"]
+[ext_resource type="Texture2D" uid="uid://bimi1c31ka2pt" path="res://Art/Player/fox walk-2.png (2).png" id="5_dw050"]
+[ext_resource type="Texture2D" uid="uid://cdf6n4aajmq2r" path="res://Art/Player/fox walk-1.png (2).png" id="6_b26j0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dw050"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_2hs0m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1jxqw")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_dw050")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_b26j0")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b26j0"]
+size = Vector2(51.5, 29)
+
+[node name="Player" type="Area2D" unique_id=27890047]
+z_index = 1
+collision_layer = 129
+collision_mask = 154
+script = ExtResource("1_sweqy")
+sword_scene = ExtResource("2_2hs0m")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=92434929]
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_dw050")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1667395348]
+position = Vector2(2.75, 12.5)
+shape = SubResource("RectangleShape2D_b26j0")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=959522058]
+
+[node name="WeaponHandler" type="Node2D" parent="." unique_id=567057545]
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=126713915]
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

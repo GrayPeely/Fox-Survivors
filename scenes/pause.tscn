@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://c1w3s4yj4mrm8"]
+
+[ext_resource type="Script" uid="uid://w2vixdad2upx" path="res://scripts/pause_script.gd" id="1_45vjg"]
+
+[node name="MenuHUD" type="CanvasLayer" unique_id=10196212]
+process_mode = 3
+script = ExtResource("1_45vjg")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1738487108]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.4627451)
+
+[node name="Button" type="Button" parent="." unique_id=1679760619]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -504.0
+offset_top = -228.0
+offset_right = -166.0
+offset_bottom = -117.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 75
+text = "Continue"
+
+[node name="EscTimer" type="Timer" parent="." unique_id=1356968260]
+one_shot = true
+
+[node name="Quit" type="Button" parent="." unique_id=2065805809]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -416.0
+offset_top = -176.0
+offset_right = -251.0
+offset_bottom = -65.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 75
+text = "Quit"
+
+[node name="End Run" type="Button" parent="." unique_id=1369426146]
+offset_left = 88.0
+offset_top = 280.0
+offset_right = 395.0
+offset_bottom = 391.0
+theme_override_font_sizes/font_size = 75
+text = "End Run"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="EscTimer" to="." method="_on_esc_timer_timeout"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="End Run" to="." method="_on_end_run_pressed"]

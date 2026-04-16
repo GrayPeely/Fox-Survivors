@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://bk36e425helm4"]
+
+[ext_resource type="Script" uid="uid://di7ncq6y3cdpr" path="res://scripts/shop.gd" id="1_viryw"]
+[ext_resource type="Texture2D" uid="uid://c2p8rql2k8nnf" path="res://Art/Swords/sword-1.png.png" id="2_e7rdd"]
+
+[node name="Shop" type="CanvasLayer" unique_id=1867673189]
+script = ExtResource("1_viryw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1928727846]
+offset_left = 72.0
+offset_top = 328.0
+offset_right = 976.0
+offset_bottom = 536.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 27
+alignment = 1
+
+[node name="1" type="VBoxContainer" parent="HBoxContainer" unique_id=1467764026]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/1" unique_id=1783626962]
+position = Vector2(144, -72)
+texture = ExtResource("2_e7rdd")
+
+[node name="Op1" type="Button" parent="HBoxContainer/1" unique_id=2091760843]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "1"
+
+[node name="2" type="VBoxContainer" parent="HBoxContainer" unique_id=1782228050]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/2" unique_id=1211159583]
+position = Vector2(143, -72)
+texture = ExtResource("2_e7rdd")
+
+[node name="Op2" type="Button" parent="HBoxContainer/2" unique_id=144738365]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "2"
+
+[node name="3" type="VBoxContainer" parent="HBoxContainer" unique_id=2130574020]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/3" unique_id=1784924395]
+position = Vector2(142, -72)
+texture = ExtResource("2_e7rdd")
+
+[node name="Op3" type="Button" parent="HBoxContainer/3" unique_id=2081538480]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "3"
+
+[node name="exitShop" type="Button" parent="." unique_id=2118865891]
+offset_left = 936.0
+offset_top = 560.0
+offset_right = 1122.0
+offset_bottom = 624.0
+theme_override_font_sizes/font_size = 40
+text = "Exit Shop"
+
+[node name="ShopTitle" type="Label" parent="." unique_id=1961439629]
+offset_left = 448.0
+offset_right = 650.0
+offset_bottom = 103.0
+theme_override_font_sizes/font_size = 75
+text = "Shop!"
+
+[node name="healButton" type="Button" parent="." unique_id=337282928]
+offset_left = 1016.0
+offset_top = 328.0
+offset_right = 1121.0
+offset_bottom = 400.0
+text = "Heal 1
+$10"
+
+[connection signal="pressed" from="HBoxContainer/1/Op1" to="." method="_on_op_1_pressed"]
+[connection signal="pressed" from="HBoxContainer/2/Op2" to="." method="_on_op_2_pressed"]
+[connection signal="pressed" from="HBoxContainer/3/Op3" to="." method="_on_op_3_pressed"]
+[connection signal="pressed" from="exitShop" to="." method="_on_exit_shop_pressed"]
+[connection signal="pressed" from="healButton" to="." method="_on_heal_button_pressed"]
