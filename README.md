@@ -16,3 +16,8 @@ WASD for movement
 Esc Key for pause menu
 Left click to interact with menu ui elements
 E to interact with chests
+
+# Credits : 
+The music is "Emerald Spacesuits" by Googolplexian60 on pixabay.
+The failure sound was by Leszek_Szary (Freesound) on pixabay
+All art was made by me.
