@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://c1w3s4yj4mrm8"]
 
 [ext_resource type="Script" uid="uid://w2vixdad2upx" path="res://scripts/pause_script.gd" id="1_45vjg"]
+[ext_resource type="PackedScene" uid="uid://qawyoco5jlhv" path="res://scenes/ui_item.tscn" id="2_r8yp4"]
 
 [node name="MenuHUD" type="CanvasLayer" unique_id=10196212]
 process_mode = 3
 script = ExtResource("1_45vjg")
+invItem = ExtResource("2_r8yp4")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1738487108]
 anchors_preset = 15
@@ -12,7 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 1, 1, 0.4627451)
+color = Color(0.30249536, 0.3024954, 0.3024954, 0.5254902)
 
 [node name="Button" type="Button" parent="." unique_id=1679760619]
 anchors_preset = 8
@@ -57,6 +59,16 @@ offset_right = 395.0
 offset_bottom = 391.0
 theme_override_font_sizes/font_size = 75
 text = "End Run"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1207692999]
+offset_left = 448.0
+offset_top = 56.0
+offset_right = 1112.0
+offset_bottom = 608.0
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer" unique_id=360437598]
+layout_mode = 2
+columns = 5
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="EscTimer" to="." method="_on_esc_timer_timeout"]

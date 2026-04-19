@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://6qe5j3nsxw8o" path="res://Sounds/fail.mp3" id="8_muem4"]
 [ext_resource type="PackedScene" uid="uid://c1w3s4yj4mrm8" path="res://scenes/pause.tscn" id="9_dp3eg"]
 [ext_resource type="PackedScene" uid="uid://b2uga7k78gkfp" path="res://scenes/sword.tscn" id="10_0ld40"]
+[ext_resource type="PackedScene" uid="uid://dd4i8iseksh1h" path="res://scenes/item_handler.tscn" id="11_ya4ey"]
 
 [sub_resource type="Curve2D" id="Curve2D_7mycd"]
 _data = {
@@ -80,6 +81,8 @@ color = Color(0.03498273, 0.38587552, 0.12224238, 1)
 [node name="Sword" parent="." unique_id=645996997 instance=ExtResource("10_0ld40")]
 visible = false
 position = Vector2(-88, -8)
+
+[node name="ItemHandler" parent="." unique_id=613036009 instance=ExtResource("11_ya4ey")]
 
 [connection signal="hit" from="Player" to="." method="playerHit"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

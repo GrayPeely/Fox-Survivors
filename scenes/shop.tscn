@@ -81,8 +81,17 @@ offset_bottom = 400.0
 text = "Heal 1
 $10"
 
+[node name="HideShop" type="Button" parent="." unique_id=267263382]
+offset_left = 32.0
+offset_top = 560.0
+offset_right = 236.0
+offset_bottom = 623.0
+theme_override_font_sizes/font_size = 40
+text = "Hide Shop"
+
 [connection signal="pressed" from="HBoxContainer/1/Op1" to="." method="_on_op_1_pressed"]
 [connection signal="pressed" from="HBoxContainer/2/Op2" to="." method="_on_op_2_pressed"]
 [connection signal="pressed" from="HBoxContainer/3/Op3" to="." method="_on_op_3_pressed"]
 [connection signal="pressed" from="exitShop" to="." method="_on_exit_shop_pressed"]
 [connection signal="pressed" from="healButton" to="." method="_on_heal_button_pressed"]
+[connection signal="pressed" from="HideShop" to="." method="_on_hide_shop_pressed"]

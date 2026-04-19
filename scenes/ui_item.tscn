@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://qawyoco5jlhv"]
+
+[ext_resource type="Script" uid="uid://dndx1hac5fe84" path="res://scripts/ui_item.gd" id="1_gjkvb"]
+[ext_resource type="Texture2D" uid="uid://ct8xyt0ba2iip" path="res://Art/Player/fox sit-1.png.png" id="2_ld2wd"]
+
+[node name="UI_ITEM" type="Control" unique_id=1201070378]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_gjkvb")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2021071199 groups=["inventory"]]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_ld2wd")
+
+[node name="Descript" type="PanelContainer" parent="." unique_id=1655382318]
+z_index = 50
+layout_mode = 0
+offset_left = -58.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Descript" unique_id=2038498061]
+layout_mode = 2
+text = "yo joesphine"
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
