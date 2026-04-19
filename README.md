@@ -1,6 +1,8 @@
 # Fox Survivors!
 Fox Survivors is a rougelike game developed by me, to use and understand the Godot game engine.  
 This was inspired by games such as brotato and vampire survivors, in which I hope to understand how they are constructed for my own development journey.  
+<img width="128" height="128" alt="fox sit-1 png" src="https://github.com/user-attachments/assets/e228768d-0950-42c2-b0f3-a2c964da16e9" />
+
 # Gameplay
 The gameplay was very basically designed to be scalable; If I decide to update this in the future, it's easy to.  
 There are a few systems running the game : Enemies, Weapons, Objects, Items  
