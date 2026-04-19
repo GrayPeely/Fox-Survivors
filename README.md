@@ -10,8 +10,8 @@ There are a few systems running the game : Enemies, Weapons, Objects, Items
 -Items aid the player by boosting stats such as damage or speed. At the moment, there are three.   
 
 # Demo :   
-Note : Quit Button will close the game and render unplayable. It's made to be a desktop application, but itch.io is the easiest way to share.
 https://olorin-fox.itch.io/fox-survivors  
+Note : Pressing the Quit Button will close the game and render unplayable until the page is reloaded. It's made to be a desktop application, but itch.io is the easiest way to share.
 # Controls :   
 WASD for movement  
 Esc Key for pause menu  
