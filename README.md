@@ -17,10 +17,10 @@ There are a few systems running the game : Enemies, Weapons, Objects, Items
 https://olorin-fox.itch.io/fox-survivors  
 
 # Controls :   
-WASD for movement  
-Esc Key for pause menu  
-Left click to interact with menu ui elements  
-E to interact with chests  
+Arrow Keys for movement    
+Esc Key for pause menu   
+Left click to interact with menu ui elements   
+E to interact with chests   
 
 # Credits :   
 The music is "Emerald Spacesuits" by Googolplexian60 on pixabay.  
