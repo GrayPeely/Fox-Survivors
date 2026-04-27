@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://bh70pn08yi2ti"]
+
+[ext_resource type="Script" uid="uid://dsxtjns5u57hf" path="res://scripts/ranged_enemy.gd" id="1_ptmmb"]
+[ext_resource type="PackedScene" uid="uid://bymnv2d1mh5yr" path="res://scenes/money!!!!!!!!!!!!!!.tscn" id="2_nqoy7"]
+[ext_resource type="Shader" uid="uid://dvdo2nu348wkm" path="res://scenes/hit_flash.tres" id="2_v0fr6"]
+[ext_resource type="PackedScene" uid="uid://cypdsestutj8" path="res://scenes/projectile.tscn" id="3_2ls4a"]
+[ext_resource type="Texture2D" uid="uid://ddkvegf50rtxg" path="res://Art/Player/fox sit1.png" id="3_nqoy7"]
+[ext_resource type="Texture2D" uid="uid://ddwo40467wpqy" path="res://Art/Player/fox sit2.png" id="4_2ls4a"]
+[ext_resource type="Texture2D" uid="uid://cx7fpheka32nr" path="res://Art/Enemy/el duck-1.png.png" id="5_w150n"]
+[ext_resource type="Texture2D" uid="uid://de6wao05amyn0" path="res://Art/Enemy/el duck-2.png.png" id="6_dvjff"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w150n"]
+shader = ExtResource("2_v0fr6")
+shader_parameter/BooleanParameter = false
+shader_parameter/tint = Color(1, 1, 1, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dvjff"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_w150n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_dvjff")
+}],
+"loop": true,
+"name": &"enemy1",
+"speed": 2.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_nqoy7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2ls4a")
+}],
+"loop": true,
+"name": &"placeholder",
+"speed": 2.5
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6r77u"]
+size = Vector2(86, 94)
+
+[sub_resource type="Animation" id="Animation_g3aa2"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_11j8y"]
+resource_name = "hitFlash"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/BooleanParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0009999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xk0lc"]
+_data = {
+&"RESET": SubResource("Animation_g3aa2"),
+&"hitFlash": SubResource("Animation_11j8y")
+}
+
+[node name="RangedEnemy" type="RigidBody2D" unique_id=786611498 groups=["mob"]]
+collision_layer = 2
+collision_mask = 5
+gravity_scale = 0.0
+sleeping = true
+lock_rotation = true
+script = ExtResource("1_ptmmb")
+coin = ExtResource("2_nqoy7")
+projectile = ExtResource("3_2ls4a")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1110280615]
+material = SubResource("ShaderMaterial_w150n")
+sprite_frames = SubResource("SpriteFrames_dvjff")
+animation = &"enemy1"
+frame_progress = 0.70442206
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1735423201]
+position = Vector2(-4, -8)
+shape = SubResource("RectangleShape2D_6r77u")
+
+[node name="Label" type="Label" parent="." unique_id=1383832978]
+offset_left = -48.0
+offset_top = -81.0
+offset_right = 40.0
+offset_bottom = 30.0
+text = "hi"
+
+[node name="hitFlash" type="AnimationPlayer" parent="." unique_id=495831863]
+libraries/ = SubResource("AnimationLibrary_xk0lc")
+
+[node name="attackTimer" type="Timer" parent="." unique_id=797246454]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="attackTimer" to="." method="_on_attack_timer_timeout"]

@@ -25,6 +25,7 @@ animations = [{
 
 [node name="Objects" type="Area2D" unique_id=351035502 groups=["objects"]]
 z_index = 2
+collision_layer = 257
 script = ExtResource("1_uq4jh")
 
 [node name="Interact" type="CollisionShape2D" parent="." unique_id=1928250912]

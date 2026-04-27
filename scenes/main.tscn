@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://chxiskiyvwyyw" path="res://scripts/main.gd" id="1_choun"]
 [ext_resource type="PackedScene" uid="uid://87usvsthgw6s" path="res://scenes/enemy.tscn" id="2_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://chq660evlbs8h" path="res://scenes/objects.tscn" id="3_eb6dy"]
+[ext_resource type="PackedScene" uid="uid://bh70pn08yi2ti" path="res://scenes/ranged_enemy.tscn" id="3_trceg"]
 [ext_resource type="PackedScene" uid="uid://dqpfbpcol0dri" path="res://scenes/tile_map.tscn" id="4_trceg"]
 [ext_resource type="PackedScene" uid="uid://bk36e425helm4" path="res://scenes/shop.tscn" id="5_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://ceuo03vxh4fff" path="res://scenes/player.tscn" id="6_jkv2x"]
@@ -25,6 +26,7 @@ loop = true
 [node name="Main" type="Node" unique_id=908455618]
 script = ExtResource("1_choun")
 mob_scene = ExtResource("2_ya4ey")
+ranged_scene = ExtResource("3_trceg")
 obj_scene = ExtResource("3_eb6dy")
 
 [node name="TileMap" parent="." unique_id=782713352 instance=ExtResource("4_trceg")]

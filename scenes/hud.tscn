@@ -62,9 +62,9 @@ text = "HP : 0"
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 72.0
+offset_left = 56.0
 offset_top = -176.0
-offset_right = 237.0
+offset_right = 221.0
 offset_bottom = -65.0
 grow_vertical = 0
 size_flags_horizontal = 4
@@ -108,6 +108,15 @@ offset_bottom = 87.0
 theme_override_font_sizes/font_size = 40
 text = "0"
 
+[node name="HowToPlay" type="Button" parent="." unique_id=883807417]
+offset_left = 48.0
+offset_top = 344.0
+offset_right = 355.0
+offset_bottom = 435.0
+theme_override_font_sizes/font_size = 50
+text = "How to Play!"
+
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="HowToPlay" to="." method="_on_how_to_play_pressed"]

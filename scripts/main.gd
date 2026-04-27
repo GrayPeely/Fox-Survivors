@@ -1,15 +1,18 @@
 extends Node
 
 @export var mob_scene: PackedScene
+@export var ranged_scene: PackedScene
 @export var obj_scene: PackedScene
 
 var score
 var roundLength = 30
 var maxMob = 10
 var mobAmount = 0
+var initialTimer = 1.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	randomize()
 	$Player.set_player_position($StartPosition.position)
 	#new_game()
 	pass
@@ -20,6 +23,8 @@ func _process(delta: float) -> void:
 	var offset = Vector2(get_viewport().size / 2)
 	$MobPath.global_position = $Player.global_position - offset
 	$HUD.updateTime($RoundTimer.time_left)
+	$HUD.update_score(Global.money)
+	
 	pass
 
 
@@ -41,9 +46,14 @@ func playerHit() -> void:
 	
 	
 func new_game():
+	print(Global.weaponList)
+	
+	Global.weaponList.clear()
+	Global.weaponPool = Global.basePool
 	get_tree().call_group("mobs", "queue_free")
 	get_tree().call_group("weapon", "queue_free")
 	get_tree().call_group("objects", "queue_free")
+	get_tree().call_group("projectiles", "queue_free")
 	
 	Global.gameState = 1
 	Global.playerHealth = 5
@@ -55,10 +65,13 @@ func new_game():
 	Global.money = 0 
 	maxMob = 10
 	mobAmount = 0
-	
-	createObj("Chest",Vector2(-100,1))
+	for i in 30:
+		var xc = randi_range(-3100, 3100)
+		var yc = randi_range(-3100, 3100)
+		createObj("Chest",Vector2(xc,yc))
 	
 	new_round()
+	Global.playerHealth = 5
 	$Music.play()
 
 #waits for start timer to end before starting score count and mob spawning
@@ -87,8 +100,10 @@ func _on_mob_timer_timeout() -> void:
 		return
 	var mob
 	var rand = randf()
-	if (Global.round < 3 or rand < 0.9):
+	if (rand < 0.7 or Global.round < 2):
 		mob = mob_scene.instantiate()
+	elif(rand > 0.9):
+		mob = ranged_scene.instantiate()
 	elif (Global.round >= 3):
 		#tank
 		mob = mob_scene.instantiate() #tank
@@ -97,6 +112,8 @@ func _on_mob_timer_timeout() -> void:
 		mob.hp = 10
 		mob.type = 2
 		pass
+	else:
+		return
 	mobAmount += 1
 	#selects a random spot along the 2d path
 	var mob_spawn_location = $MobPath/MobSpawnLocation
@@ -132,7 +149,8 @@ func _on_round_timer_timeout() -> void:
 func end_round():
 	mobAmount = 0
 	$MobTimer.stop()
-	get_tree().call_group("mobs", "queue_free")
+	get_tree().call_group("mob", "queue_free")
+	get_tree().call_group("projectiles", "queue_free")
 	$HUD.show_message("End Round")
 	shop()
 	
@@ -151,10 +169,12 @@ func shop():
 		#pass
 
 func new_round():
+	if(Global.roundHeal > 0 and Global.round != 1):
+		Global.playerHealth += Global.roundHeal
 	maxMob = maxMob * 1.5
 	print(str(Global.round))
 	#$HUD.updateHealth(str(Global.playerHealth))
-	$MobTimer.wait_time = max(0.1, 1.0 - (Global.round * 0.05))
+	$MobTimer.wait_time = max(0.1, initialTimer - (Global.round * 0.05))
 	print("spawn wait : " + str($MobTimer.wait_time))
 	$RoundTimer.wait_time = 28+(Global.round * 2)
 	$HUD.updateHealth(str(Global.playerHealth))
@@ -173,3 +193,5 @@ func createObj(inputType, pos):
 	obj.z_index = 0
 	add_child(obj)
 	pass
+	
+	

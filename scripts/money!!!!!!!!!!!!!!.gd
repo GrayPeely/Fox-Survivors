@@ -4,7 +4,8 @@ var truthNuke = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
+	if value > 2.5 :
+		$textureeeee.texture = preload("res://Art/el coin 2.png")
 	pass # Replace with function body.
 
 

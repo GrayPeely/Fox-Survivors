@@ -6,17 +6,6 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_ts324"]
 radius = 37.831863
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ijdem"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_umso4")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [node name="Money!!!!!!!!!!!!!!" type="Area2D" unique_id=1216678669 groups=["objects"]]
 z_index = 7
 collision_layer = 9
@@ -27,8 +16,8 @@ script = ExtResource("1_fvk2s")
 position = Vector2(-2.5, -2)
 shape = SubResource("CircleShape2D_ts324")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1273299860]
-sprite_frames = SubResource("SpriteFrames_ijdem")
+[node name="textureeeee" type="Sprite2D" parent="." unique_id=844111248]
+texture = ExtResource("2_umso4")
 
 [node name="TrutherTimer" type="Timer" parent="." unique_id=137249054]
 

@@ -3,6 +3,8 @@ var pool = Global.weaponPool
 var weapon1 = pool[0]
 var weapon2 = pool[1]
 var weapon3 = pool[2]
+var hidden = false
+var shop = false
 
 signal exited
 # Called when the node enters the scene tree for the first time.
@@ -12,6 +14,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
 	pass
 func update():
 	$"HBoxContainer/1/Sprite2D".texture = weapon1["Icon"]
@@ -25,6 +28,7 @@ func update():
 	
 
 func shopStart():
+	shop = true
 	pool.shuffle()
 	weapon1 = pool[0]
 	weapon2 = pool[1]
@@ -33,6 +37,7 @@ func shopStart():
 	pass
 
 func _on_exit_shop_pressed() -> void:
+	shop = false
 	exited.emit()
 	pass # Replace with function body.
 
@@ -56,9 +61,30 @@ func buy_weapon(weaponSold):
 	pass
 	
 
-
 func _on_heal_button_pressed() -> void:
 	if(Global.money >= 10):
 		Global.money -= 10
 		Global.playerHealth += 1
-	pass # Replace with function body.
+	pass # Replace with function bod
+	
+	
+
+
+func _on_hide_shop_pressed() -> void:
+	print("ONE")
+	if hidden == false :
+		print("TWO")
+		$HBoxContainer.hide()
+		$healButton.hide()
+		$exitShop.hide()
+		$HideShop.text = "Show Shop"
+		hidden = true
+		return
+	if hidden == true :
+		print("THREE")
+		$HBoxContainer.show()
+		$healButton.show()
+		$exitShop.show()
+		$HideShop.text = "Hide Shop"
+		hidden = false
+		return

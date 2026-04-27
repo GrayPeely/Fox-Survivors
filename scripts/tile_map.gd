@@ -20,7 +20,10 @@ var terrain_path_int = 0
 var grass_path_int = 1
 
 func _ready() -> void:
+	
 	noise = noise_height_texture.noise
+	noise.seed = randi()
+	
 	generate_world()
 	
 func generate_world():

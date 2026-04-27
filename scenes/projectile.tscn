@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cypdsestutj8"]
+
+[ext_resource type="Texture2D" uid="uid://cji6ui5yiqpr" path="res://Art/Enemy/el ball-2.png.png" id="1_c8fcr"]
+[ext_resource type="Script" uid="uid://1otte8inmc4f" path="res://scripts/projectile.gd" id="1_q3m7n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q3m7n"]
+size = Vector2(32, 32)
+
+[node name="projectile" type="Area2D" unique_id=829120640 groups=["projectiles"]]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_q3m7n")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1302903007]
+texture = ExtResource("1_c8fcr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=984108560]
+shape = SubResource("RectangleShape2D_q3m7n")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1084889341]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
