@@ -77,9 +77,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -632.0
-offset_top = 151.0
+offset_top = 112.0
 offset_right = -104.0
-offset_bottom = 679.0
+offset_bottom = 640.0
 grow_horizontal = 0
 texture = ExtResource("2_64ctp")
 
@@ -116,7 +116,44 @@ offset_bottom = 435.0
 theme_override_font_sizes/font_size = 50
 text = "How to Play!"
 
+[node name="exittutorial" type="Button" parent="." unique_id=1728566542]
+offset_left = 32.0
+offset_top = 568.0
+offset_right = 208.0
+offset_bottom = 623.0
+theme_override_font_sizes/font_size = 40
+text = "Exit Tutorial"
+
+[node name="tutorialText" type="Label" parent="." unique_id=1607332396]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 48.0
+offset_top = -124.0
+offset_right = 432.0
+offset_bottom = 81.0
+grow_vertical = 2
+text = "Controls using arrow keys
+Player weapons attack automatically at
+the nearest enemy
+Enemies move & attack players, but are
+immobile here for practice. Upon death, they
+drop coins.
+Chests can be opened using coins, to gain items,
+modifying stats like speed or damage."
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="tutorialText" unique_id=108565586]
+z_index = -1
+layout_mode = 0
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 384.0
+offset_bottom = 216.0
+color = Color(0, 0, 0, 0.28235295)
+
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="HowToPlay" to="." method="_on_how_to_play_pressed"]
+[connection signal="pressed" from="exittutorial" to="." method="_on_exittutorial_pressed"]

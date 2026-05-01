@@ -54,6 +54,7 @@ func death():
 	queue_free()
 
 func _on_attack_timer_timeout() -> void:
+	hitAnim.play("kill")
 	var proj = projectile.instantiate()
 	proj.damage = 1
 	proj.dir = global_position.direction_to(player.global_position)

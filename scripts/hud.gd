@@ -1,9 +1,12 @@
 extends CanvasLayer
 signal start_game
 signal tutorial
+signal exitTut
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$tutorialText.hide()
+	$exittutorial.hide()
 	$QuitButton.hide()
 	$ScoreLabel.hide()
 	$Health.hide()
@@ -81,6 +84,7 @@ func updateTime(time):
 
 func _on_how_to_play_pressed() -> void:
 	tutorial.emit()
+	showTutorial()
 	pass # Replace with function body.
 
 func showTutorial():
@@ -89,4 +93,22 @@ func showTutorial():
 	$HowToPlay.hide()
 	$Title.hide()
 	$roundLabel.hide()
+	$ScoreLabel.show()
 	$fox.hide()
+	$exittutorial.show()
+	$tutorialText.show()
+
+func _on_exittutorial_pressed() -> void:
+	exitTut.emit()
+	$tutorialText.hide()
+	$roundLabel.hide()
+	$Message.hide()
+	$Title.show()
+	$StartButton.show()
+	#$QuitButton.show()
+	$QuitButton.hide()
+	$fox.show()
+	$HowToPlay.show()
+	$ScoreLabel.hide()
+	$exittutorial.hide()
+	pass # Replace with function body.

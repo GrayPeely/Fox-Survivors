@@ -194,4 +194,30 @@ func createObj(inputType, pos):
 	add_child(obj)
 	pass
 	
-	
+
+func _on_hud_tutorial() -> void:
+	Global.gameState = 99
+	$Player.show()
+	Global.weaponList.clear()
+	Global.weaponPool = Global.basePool
+	get_tree().call_group("mobs", "queue_free")
+	get_tree().call_group("weapon", "queue_free")
+	get_tree().call_group("objects", "queue_free")
+	get_tree().call_group("projectiles", "queue_free")
+	$Player.start($StartPosition.position)
+
+	for i in 10:
+		var mob = mob_scene.instantiate()
+		var ypos = i*60 - 200
+		mob.global_position = $Player.global_position + Vector2(400, ypos)
+		mob.tut = true
+		add_child(mob)
+	createObj("Cjest", $Player.global_position + Vector2(0, -250))
+	createObj("Cjest", $Player.global_position + Vector2(100, -250))
+	createObj("Cjest", $Player.global_position + Vector2(-100, -250))
+	pass # Replace with function body.
+
+
+func _on_hud_exit_tut() -> void:
+	Global.gameState = 0
+	pass # Replace with function body.

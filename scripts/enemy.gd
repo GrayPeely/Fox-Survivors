@@ -1,9 +1,10 @@
 extends RigidBody2D
 var hp = 5
-var speed = 135
+var speed = 115
 var player
 var value = 1
 var type = 1
+var tut = false
 @export var coin : PackedScene
 @onready var hitAnim = $hitFlash
 
@@ -35,7 +36,8 @@ func _process(delta: float) -> void:
 		updateHealth()
 		# 1. Calculate the direction to the player
 		var direction = global_position.direction_to(player.global_position)
-		
+		if tut == true:
+			return
 		linear_velocity = direction * speed
 		
 		# 3. Flip the sprite to look at the player

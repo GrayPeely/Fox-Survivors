@@ -39,15 +39,15 @@ var weaponPool = [
 	"Icon" : preload("res://Art/Axes/axe-1.png.png")},
 	
 	{"Name" : "Gold Axe", 
-	"Cost" : 40, "State" : 1, "Damage" : 14,
+	"Cost" : 35, "State" : 1, "Damage" : 14,
 	"Icon" : preload("res://Art/Axes/axe-1.png (3).png")},
 	
 	{"Name" : "Adorned Axe", 
-	"Cost" : 65, "State" : 2, "Damage" : 21,
+	"Cost" : 45, "State" : 2, "Damage" : 21,
 	"Icon" : preload("res://Art/Axes/axe-1.png (1).png")},
 	
 	{"Name" : "Dragonsteel Axe", 
-	"Cost" : 150, "State" : 3, "Damage" : 28,
+	"Cost" : 55, "State" : 3, "Damage" : 28,
 	"Icon" : preload("res://Art/Axes/axe-1.png (4).png")},
 ]
 var basePool = weaponPool.duplicate(true)
@@ -69,9 +69,9 @@ var itemPool = [
 	"Description" : "Increases Speed", "Stat" : "Speed", "StatNum" : 10,
 	"Icon" : preload("res://Art/Items/thyShoe.png"), "Rarity" : "Common"},
 	
-	{"Name" : "Sugar", 
+	{"Name" : "Cookie", 
 	"Description" : "Increases Attackspeed", "Stat" : "AttackSpeed", "StatNum" : 1,
-	"Icon" : preload("res://Art/Player/fox sit1.png"), "Rarity" : "Common"}
+	"Icon" : preload("res://Art/Items/cookie-1.png.png"), "Rarity" : "Common"}
 ]
 
 
